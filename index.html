@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="index.css"> 
+<meta name="description" content="100119">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Welcome</title>
+</head>
+  
+<body>
+  <section class="begin">
+    <h1>Welcome</h1>
+    <h2>Quiz</h2>
+    <a href="#">Start</a>
+  </section>
+    
+  <main class="quiz">
+    
+    <h3>Show question here</h3>
+    
+    <form id="quizQuestions" action="#" class="radio">   
+      <input type="radio" id="a" name="Option" value="0"> <label> A </label></br> 
+      <input type="radio" id="b" name="Option" value="1"> <label> B </label></br> 
+      <input type="radio" id="c" name="Option" value="2"> <label> C </label></br>
+      <input type="radio" id="d" name="Option" value="3"> <label> D </label></br> 
+      <input type="radio" id="e" name="Option" value="4"> <label> E </label></br>
+      <p>
+      <input type="submit" id="submit" value="Submit"></p>
+    </form>
+
+  <mark class="specifics"> The correct answer is highlight.
+  </mark>
+
+  <summary class="more"> Hooray! You are correct.</summary>
+  </main>
+  
+  <summary class="results"> 
+    <h2>Results</h2>
+    <p>You scored x out of y correct</p>
+    
+    <button class = "nextQuestion">Next Question</button>
+    <a href="#">Take the quiz again</a>
+  </summary>
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="index.js"></script>
+</body>
+
+</html>
