@@ -91,7 +91,11 @@ function addEventListeners(){
         alert('You must select and answer to continue');
       }
     });*/
-    
+    $(".nextQuestion").click(function(e){
+        e.preventDefault();
+        showQuestion();
+        $(".specifics, .more").text("")
+        })
    $('#quizQuestions').submit(event=>{
      event.preventDefault();
      // alert('submitted')
@@ -105,22 +109,24 @@ function addEventListeners(){
      
         console.log(`user answered ${radioValue} and correct answer is ${correctAnswer}`);
       //hide submit button
-      $("#submit").css("display","none")
+        $("#submit").css("display","none")
      
-      //show next question button
-      (".nextQuestion").css("display", "block")
-      (".nextQuestion").click(function(e){
-      e.preventDefault();
-      showQuestion();
+        if (radioValue===correctAnswer){
+          //correct answer from user
+             $('.more').text('You are correct!')
+         } else {
+             $('.more').text('Better luck next time.')
+         }
+         currentQuestion++;
+         if (currentQuestion>=questions.length){
+             showSummary();
+         } else {
+             //show next question button
+             $(".nextQuestion").css("display", "block")
+         }
       }
-      
-      if (radioValue===correctAnswer){
-      //correct answer from user
-      $('.more').text('You are correct!')
-      } else {
-      $('.more').text('Better luck next time.')
-      }
-        
+    })
+}
   //functions
 
   function showQuestion(){
@@ -143,13 +149,7 @@ function addEventListeners(){
       score++;
     }
   }
- currentQuestion++;
-    if(currentQuestion>=questions.length){
-    showSummary();
-    } else {
-    showQuestion();
-  }
-  
+   
   function showSummary(){
     $('.quiz').hide();
     $('.more').show();
@@ -165,8 +165,3 @@ function addEventListeners(){
   }
 
 $(startQuizGame)
-
-
-
-
-
