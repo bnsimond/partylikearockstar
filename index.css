@@ -1,19 +1,18 @@
 * {
     font-family: serif;
-    padding: 0;
+    padding: 0px;
     margin: 0;
     box-sizing: border-box;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: normal;
     color: black;
     text-decoration: none;
-    font-variant: small-caps;
     }
   
   h1 {
     font-weight: bold;
     text-align: center;
-    font-size: 46px; 
+    font-size: 40px; 
     margin: 30px 0px 0px 15px;
     color: #c80000;
     padding: 30px;
@@ -63,6 +62,16 @@
   
   .nextQuestion {
     display: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  #submit {
+    border-radius: 5px;
+    padding: 5px;
   }
 
   .specifics, .more {
@@ -70,19 +79,18 @@
   }
 
   .results {
-    display:none;
+    display: none;
+    text-align: center;
   }
 
   .again {
-    display:none;
+    display: none;
   }
 
   .begin {
     display: show;
   }
 
-  body {
-    background-image: balloons;
-  }
+  
   
   
