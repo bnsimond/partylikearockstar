@@ -57,12 +57,20 @@
      margin: 40px;  
   }
   
-  .quiz, .specifics, .more, .results {
-    display:show;
+  .quiz {
+    display: none;
   }
   
   .nextQuestion {
-    display:show;
+    display: show;
+  }
+
+  .specifics, .more, .results {
+    display: show;
+  }
+
+  .begin {
+    display: show;
   }
   
   

@@ -69,16 +69,20 @@ let questions = [
   
 //event listeners
 
+//starts quiz
 function startQuizGame(){
     addEventListeners();
 }
 
+//what happens when the start button is clicked
 function addEventListeners(){
-  $('.begin a').click(function(e){
+    $('.begin a').click(function(e){
       //alert('clicked')
       e.preventDefault();
+      //the start button hides and the quiz questions appear
       $('.begin').hide();
       $('.quiz').show();
+      //showQuestion function starts
       showQuestion();
     });
     
@@ -91,39 +95,59 @@ function addEventListeners(){
         alert('You must select and answer to continue');
       }
     });*/
+
+    //when the nextQuestion is clicked
     $(".nextQuestion").click(function(e){
         e.preventDefault();
         showQuestion();
+        //specifics class and more class clears out or resets
         $(".specifics, .more").text("")
+        //the submit button should reappear but it does not
+        $("#submit").css("show")
         })
-   $('#quizQuestions').submit(event=>{
+
+    //when the submit button from the form is clicked
+    $('#quizQuestions').submit(event=>{
      event.preventDefault();
-     // alert('submitted')
+         // alert('submitted')
       let radioValue = $("input[name='Option']:checked").val();
+      //compares the selected value with the correct value
       let correctAnswer = questions[currentQuestion].correct;
       console.log("radio value = ", radioValue);
+      //if no option is selected -- Please choose an option appears.
       if (radioValue===undefined){
         $(".specifics").text("Please choose an option.")
       } else {
+        //if a value is selected, it shows what the correct answer is. 
         $(".specifics").text(`You answered ${radioValue} and the correct answer should be ${correctAnswer}`)
-     
-        console.log(`user answered ${radioValue} and correct answer is ${correctAnswer}`);
-      //hide submit button
+        //submit button should not show and nextQuestion button should show. (is toggle needed?)
         $("#submit").css("display","none")
+      }
+      
+      if (radioValue.checked){
+      //if (console.log(`user answered ${radioValue} and correct answer is ${correctAnswer}`)){
+          //hide submit button
+        $("#submit").css("display","none")
+      } else {
+        $("#submit").css("display","show")
+      }
      
-        if (radioValue===correctAnswer){
+      //compares the selected value versus the correct answer
+      if (radioValue==correctAnswer){
           //correct answer from user
-             $('.more').text('You are correct!')
-         } else {
-             $('.more').text('Better luck next time.')
-         }
+        $('.more').text('You are correct!')
+      } else {
+        $('.more').text('Better luck next time.')
+      }
+         //go to next question
          currentQuestion++;
-         if (currentQuestion>=questions.length){
-             showSummary();
-         } else {
-             //show next question button
-             $(".nextQuestion").css("display", "block")
-         }
+
+      //if currentQuestion index is greater than or equal to questions.length - show summary
+      if (currentQuestion>=questions.length){
+            showSummary();
+      } else {
+           //show next question button
+        $(".nextQuestion").css("display", "block")
       }
     })
 }
@@ -138,9 +162,10 @@ function addEventListeners(){
     var labels= $("label").toArray();
     //console.log(inputTags)
     for(var i=0; i<questionObject.answers.length; i++){
-      $(labels[i]).text(questionObject.answers[i])
+    $(labels[i]).text(questionObject.answers[i])
      //$(inputTags[i]).val(questionObject.answers[i])
     }
+    
   }
   //pass into function
   function checkAnswer(){
@@ -153,7 +178,7 @@ function addEventListeners(){
   function showSummary(){
     $('.quiz').hide();
     $('.more').show();
-    $('.results p').text ("You scored 'x' out of 'questions.length'");
+    $('.results p').text ("You scored x out of ${questions.length}");
   }
     
   function restartQuiz(){
