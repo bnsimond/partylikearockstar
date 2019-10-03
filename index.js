@@ -1,7 +1,9 @@
 //global variables
-let score = 0;
+//let score = 0;
 //will track the index of the question
 let currentQuestion = 0;
+
+let totalQuestionsAnsweredCorrectly = 0;
 
 //array of objects
 let questions = [
@@ -76,12 +78,14 @@ function startQuizGame(){
 
 //what happens when the start button is clicked
 function addEventListeners(){
-    $('.begin a').click(function(e){
+    $('.begin a, .again').click(function(e){
       //alert('clicked')
       e.preventDefault();
+      currentQuestion = 0;
+      totalQuestionsAnsweredCorrectly = 0;
       //the start button hides and the quiz questions appear
       $('.begin, .specifics, .more').hide();
-      $('.quiz').show();
+      $('.quiz, #submit').show();
       //showQuestion function starts
       showQuestion();
     });
@@ -103,12 +107,13 @@ function addEventListeners(){
         //specifics class and more class clears out or resets
         $(".specifics, .more").text("")
         //the submit button should reappear but it does not
-        $("#submit").css("show")
-        })
-
-    $(".nextQuestion").click(function(){
+        //$("#submit").show();
         $("#submit, .nextQuestion, .results").toggle();
         })
+
+    //$(".nextQuestion").click(function(){
+    //    $("#submit, .nextQuestion, .results").toggle();
+    //    })
          
 
     //when the submit button from the form is clicked
@@ -119,34 +124,37 @@ function addEventListeners(){
       let radioValue = $("input[name='Option']:checked").val();
       //compares the selected value with the correct value
       let correctAnswer = questions[currentQuestion].correct;
-      score += 1; 
+     // score += 1; 
       console.log("radio value = ", radioValue);
       //if no option is selected -- Please choose an option appears.
       if (radioValue===undefined){
         $(".specifics").text("Please choose an option.")
         $(".more, .results").css("display", "none")
       } else {
+        if (radioValue==correctAnswer){
+          totalQuestionsAnsweredCorrectly ++
+          $('.more').text('You are correct!')
+        } else {
+          $('.more').text('Better luck next time.')
+        }
         //if a value is selected, it shows what the correct answer is. 
-        $(".specifics").text(`You answered ${radioValue} and the correct answer should be ${correctAnswer}`)
+        createSpecificText(radioValue, correctAnswer)
         //submit button should not show and nextQuestion button should show. (is toggle needed?)
-        $("#submit").css("display","none")
+        $("#submit").hide();
       }
       
-      if (radioValue.checked){
+     /* if (radioValue.checked){
       //if (console.log(`user answered ${radioValue} and correct answer is ${correctAnswer}`)){
           //hide submit button
-        $("#submit").css("display","none")
+        $("#submit").hide();
       } else {
-        $("#submit").css("display","show")
+        $("#submit").show();
       }
+      */
+
      
       //compares the selected value versus the correct answer
-      if (radioValue==correctAnswer){
-          //correct answer from user
-        $('.more').text('You are correct!')
-      } else {
-        $('.more').text('Better luck next time.')
-      }
+
          //go to next question
          currentQuestion++;
 
@@ -190,7 +198,18 @@ function addEventListeners(){
     $(".again").show();
   }
 
-  function getScore(){
+  function createSpecificText(radioValue, correctAnswer){
+    let answerArray=questions[currentQuestion].answers;
+    let usersAnswerString=answerArray[radioValue];
+    let correctAnswerString=answerArray[correctAnswer];
+    let totalQuestionsAnswered=currentQuestion+1
+    let statString=`<ul><li>Correct Answers: ${totalQuestionsAnsweredCorrectly}</li><li>Total Questions Answered: ${totalQuestionsAnswered}</li></ul>`;
+    let tallyString=`<p>You answered ${usersAnswerString} and the correct answer should be ${correctAnswerString}</p>`;
+    $(".specifics").html(tallyString+statString)
+  }
+
+
+ /* function getScore(){
     score=0
     var numQuestions=10;
     for (var i=0;i<numQuestions;i++){
@@ -203,10 +222,10 @@ function addEventListeners(){
       
     }
     return score;
-    }
+  }*/
  
-  function totalScore(){
-  ("Your score is" +getScore()+"out of 10");
+  //function totalScore(){
+  //("Your score is" +getScore()+"out of 10");
     
   function restartQuiz(){
     $('.more').hide();
@@ -217,7 +236,7 @@ function addEventListeners(){
 
     //function new() {
     //  totalScore();
-    }
+   // }
   }
 
 $(startQuizGame)
