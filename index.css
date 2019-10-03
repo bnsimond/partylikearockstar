@@ -62,15 +62,27 @@
   }
   
   .nextQuestion {
-    display: show;
+    display: none;
   }
 
-  .specifics, .more, .results {
-    display: show;
+  .specifics, .more {
+    display: none;
+  }
+
+  .results {
+    display:none;
+  }
+
+  .again {
+    display:none;
   }
 
   .begin {
     display: show;
+  }
+
+  body {
+    background-image: balloons;
   }
   
   

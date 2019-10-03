@@ -39,13 +39,13 @@ let questions = [
    {
     title: "I cannot afford to have a party. What should I do?",
     answers: ["Wait until you can afford to have a party.", "Do not have a party", "Have a Potluck", "Charge an Entry fee", "Play the lottery"],
-    correct: 4
+    correct: 0
    },
   
    {
     title: "I am going to a birthday party for my cousin, what should I buy her?",
     answers: ["Nothing", "Depends on her interests", "Regift what she bought you for your birthday", "Nothing more than $1.00", "A dog."],
-    correct: 4
+    correct: 1
    },
   
    {
@@ -80,7 +80,7 @@ function addEventListeners(){
       //alert('clicked')
       e.preventDefault();
       //the start button hides and the quiz questions appear
-      $('.begin').hide();
+      $('.begin, .specifics, .more').hide();
       $('.quiz').show();
       //showQuestion function starts
       showQuestion();
@@ -106,17 +106,25 @@ function addEventListeners(){
         $("#submit").css("show")
         })
 
+    $(".nextQuestion").click(function(){
+        $("#submit, .nextQuestion, .results").toggle();
+        })
+         
+
     //when the submit button from the form is clicked
     $('#quizQuestions').submit(event=>{
      event.preventDefault();
          // alert('submitted')
+      $('.results, .specifics, .more').show();
       let radioValue = $("input[name='Option']:checked").val();
       //compares the selected value with the correct value
       let correctAnswer = questions[currentQuestion].correct;
+      score += 1; 
       console.log("radio value = ", radioValue);
       //if no option is selected -- Please choose an option appears.
       if (radioValue===undefined){
         $(".specifics").text("Please choose an option.")
+        $(".more, .results").css("display", "none")
       } else {
         //if a value is selected, it shows what the correct answer is. 
         $(".specifics").text(`You answered ${radioValue} and the correct answer should be ${correctAnswer}`)
@@ -178,15 +186,38 @@ function addEventListeners(){
   function showSummary(){
     $('.quiz').hide();
     $('.more').show();
-    $('.results p').text ("You scored x out of ${questions.length}");
+    $('.results p').text ('You scored x out of "$(questions.length)"');
+    $(".again").show();
   }
+
+  function getScore(){
+    score=0
+    var numQuestions=10;
+    for (var i=0;i<numQuestions;i++){
+    if (userInput[i]==answers[i]){
+    score += 1;
+    }
+    else{
+    score += 0;
+    }
+      
+    }
+    return score;
+    }
+ 
+  function totalScore(){
+  ("Your score is" +getScore()+"out of 10");
     
   function restartQuiz(){
     $('.more').hide();
     $('.quiz').show();
-    score=0;
+    newFunction();
     currentQuestion=0;
     showQuestion();
+
+    //function new() {
+    //  totalScore();
+    }
   }
 
 $(startQuizGame)
