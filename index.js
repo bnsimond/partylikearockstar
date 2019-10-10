@@ -86,6 +86,7 @@ function addEventListeners(){
       //the start button hides and the quiz questions appear
       $('.begin, .specifics, .more').hide();
       $('.quiz, #submit').show();
+      $('.again').hide();
       //showQuestion function starts
       showQuestion();
     });
@@ -109,6 +110,7 @@ function addEventListeners(){
         //the submit button should reappear but it does not
         //$("#submit").show();
         $("#submit, .nextQuestion, .results").toggle();
+        document.getElementById("quizQuestions").reset();
         })
 
     //$(".nextQuestion").click(function(){
@@ -141,64 +143,49 @@ function addEventListeners(){
         createSpecificText(radioValue, correctAnswer)
         //submit button should not show and nextQuestion button should show. (is toggle needed?)
         $("#submit").hide();
-      }
       
-     /* if (radioValue.checked){
-      //if (console.log(`user answered ${radioValue} and correct answer is ${correctAnswer}`)){
-          //hide submit button
-        $("#submit").hide();
-      } else {
-        $("#submit").show();
-      }
-      */
-
-     
-      //compares the selected value versus the correct answer
-
-         //go to next question
          currentQuestion++;
 
-      //if currentQuestion index is greater than or equal to questions.length - show summary
-      if (currentQuestion>=questions.length){
+        //if currentQuestion index is greater than or equal to questions.length - show summary
+        if (currentQuestion>=questions.length){
             showSummary();
-      } else {
+        } else {
            //show next question button
         $(".nextQuestion").css("display", "block")
+        }
       }
     })
 }
   //functions
 
-  function showQuestion(){
+  function showQuestion () {
     let questionObject = questions[currentQuestion];
     $('.quiz h3').text(questionObject.title);
-    //MAY HAVE TO AMEND BELOW//
-    //$('.quiz').html('');//
-    //var inputTags = $("input[name='Option']").toArray();
+
     var labels= $("label").toArray();
     //console.log(inputTags)
-    for(var i=0; i<questionObject.answers.length; i++){
-    $(labels[i]).text(questionObject.answers[i])
+    for (var i=0; i<questionObject.answers.length; i++) {
+      $(labels[i]).text(questionObject.answers[i])
      //$(inputTags[i]).val(questionObject.answers[i])
     }
     
   }
   //pass into function
-  function checkAnswer(){
-    let answer = questions[currentQuestion];
-    if(correctAnswer === radioValue){
-      score++;
-    }
-  }
+ // function checkAnswer () {
+   // let answer = questions[currentQuestion];
+    //if (correctAnswer === radioValue) {
+      //score++;
+    //}
+  //}
    
-  function showSummary(){
+  function showSummary () {
     $('.quiz').hide();
     $('.more').show();
     $('.results p').text ('You scored x out of "$(questions.length)"');
     $(".again").show();
   }
 
-  function createSpecificText(radioValue, correctAnswer){
+  function createSpecificText (radioValue, correctAnswer) {
     let answerArray=questions[currentQuestion].answers;
     let usersAnswerString=answerArray[radioValue];
     let correctAnswerString=answerArray[correctAnswer];
@@ -226,7 +213,7 @@ function addEventListeners(){
  
   //function totalScore(){
   //("Your score is" +getScore()+"out of 10");
-    
+  /*  
   function restartQuiz(){
     $('.more').hide();
     $('.quiz').show();
@@ -238,5 +225,5 @@ function addEventListeners(){
     //  totalScore();
    // }
   }
-
+*/
 $(startQuizGame)
