@@ -204,7 +204,7 @@ function addEventListeners(){
     let correctAnswerString=answerArray[correctAnswer];
     let totalQuestionsAnswered=currentQuestion+1
     let statString=`<ul><li>Correct Answers: ${totalQuestionsAnsweredCorrectly}</li><li>Total Questions Answered: ${totalQuestionsAnswered}</li></ul>`;
-    let tallyString=`<p>You answered ${usersAnswerString} and the correct answer should be ${correctAnswerString}</p>`;
+    let tallyString=`<p>You answered <mark>"${usersAnswerString}"</mark> and the correct answer should be <mark>"${correctAnswerString}".</mark></p>`;
     $(".specifics").html(tallyString+statString)
   }
 
