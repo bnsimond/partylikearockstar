@@ -8,11 +8,7 @@
     color: black;
     text-decoration: none;
     }
-  
-    body {
-    margin-left: 40px;
-  }    
-
+     
   h1 {
     font-weight: bold;
     text-align: center;
@@ -30,6 +26,7 @@
   
   h3 {
     font-style: italic;
+    margin: 30px 0 0 0;
   } 
   
   a {
@@ -57,7 +54,19 @@
     /* margin: 10px 5px 12px - 10px top, 5px left & right, 12px bottom */
     /* margin: 10px 5px 15px 20px - 10 top, 5 right, 15 bottom, 20 left */
   }
+
+  #quizQuestions div {
+    display:flex;
+  }
+
+  #quizQuestions input, #quizQuestions label {
+    display: block;
+  }
   
+  #quizQuestions input {
+    margin: 5px 5px 0 0;
+  }
+ 
   main {
      margin: 40px;  
   }
@@ -73,16 +82,28 @@
     margin-top: 50px;
     padding: 5px;
     border-radius: 5px;
+    background-image: linear-gradient(to right, red , black);
+    color: white;
+  }
+
+  .nextQuestion:hover {
+    background: red;
   }
 
   #submit {
     border-radius: 5px;
     padding: 5px;
+    background-image: linear-gradient(to right, purple, green, blue);
+    color: white;
+  }
+
+  #submit:hover {
+    background: purple;
   }
 
   .specifics, .more {
     display: none;
-    margin: 0px 0px 5px 40px;
+    margin: 0px 40px 5px;
     font-weight: bold;
   }
 
@@ -113,9 +134,18 @@
     margin-right: auto;
   }
   
+  @media screen and (max-width: 380px) {
+    a {
+      width: 50%;
+    }
 
- 
+    .again {
+      width: 50%;
+    }
+  }
 
-  
-  
-  
+  @media screen and (min-width: 768px) {
+    main {
+      margin-left: 40px;
+    }
+  }

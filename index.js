@@ -86,7 +86,7 @@ function addEventListeners () {
       //these buttons hide and the quiz/submit and questions appear
       $('.begin, .specifics, .more').hide () ;
       $('.quiz, #submit').show () ;
-      $('.again').hide () ;
+      $('.again','.ribbon').hide () ;
       //showQuestion function starts
       showQuestion () ;
     });
@@ -148,19 +148,18 @@ function addEventListeners () {
     $('.quiz h3').text(questionObject.title);
 
     var labels= $("label").toArray();
-    //console.log(inputTags)
     for (var i=0; i<questionObject.answers.length; i++) {
       $(labels[i]).text(questionObject.answers[i])
-     //$(inputTags[i]).val(questionObject.answers[i])
     }
     
   }
    
   function showSummary () {
-    $('.quiz').hide();
-    $('.more').show();
+    $('.quiz').hide () ;
+    $('.more').show () ;
     $('.results p').text ('You scored x out of "$(questions.length)"');
-    $(".again").show();
+    $(".again").show () ;
+    $(".ribbon").show () ;
   }
 
   function createSpecificText (radioValue, correctAnswer) {
