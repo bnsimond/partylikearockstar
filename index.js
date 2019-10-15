@@ -86,7 +86,7 @@ function addEventListeners () {
       //these buttons hide and the quiz/submit and questions appear
       $('.begin, .specifics, .more').hide () ;
       $('.quiz, #submit').show () ;
-      $('.again','.ribbon').hide () ;
+      $('.again').hide () ;
       //showQuestion function starts
       showQuestion () ;
     });
@@ -159,7 +159,6 @@ function addEventListeners () {
     $('.more').show () ;
     $('.results p').text ('You scored x out of "$(questions.length)"');
     $(".again").show () ;
-    $(".ribbon").show () ;
   }
 
   function createSpecificText (radioValue, correctAnswer) {
