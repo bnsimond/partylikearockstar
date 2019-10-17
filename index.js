@@ -1,3 +1,4 @@
+
 //global variables
 //let score = 0;
 //will track the index of the question
@@ -86,6 +87,7 @@ function addEventListeners () {
       //these buttons hide and the quiz/submit and questions appear
       $('.begin, .specifics, .more').hide () ;
       $('.quiz, #submit').show () ;
+      $('form, .question').show () ;
       $('.again').hide () ;
       //showQuestion function starts
       showQuestion () ;
@@ -155,7 +157,7 @@ function addEventListeners () {
   }
    
   function showSummary () {
-    $('.quiz').hide () ;
+    $('form, .nextQuestion, .question').hide () ;
     $('.more').show () ;
     $('.results p').text ('You scored x out of "$(questions.length)"');
     $(".again").show () ;
@@ -166,9 +168,10 @@ function addEventListeners () {
     let usersAnswerString=answerArray[radioValue];
     let correctAnswerString=answerArray[correctAnswer];
     let totalQuestionsAnswered=currentQuestion+1
-    let statString=`<ul><li>Correct Answers: ${totalQuestionsAnsweredCorrectly}</li><li>Total Questions Answered: ${totalQuestionsAnswered}</li></ul>`;
+    let statString=`<ul><li>Correct Answers: ${totalQuestionsAnsweredCorrectly}</li><li>Total Questions Answered: ${totalQuestionsAnswered} out of 10.</li></ul>`;
     let tallyString=`<p>You answered <mark>"${usersAnswerString}"</mark> and the correct answer should be <mark>"${correctAnswerString}".</mark></p>`;
     $(".specifics").html(tallyString+statString)
   }
 
 $(startQuizGame)
+

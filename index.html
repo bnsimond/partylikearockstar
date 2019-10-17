@@ -6,44 +6,51 @@
   <meta name="viewport" content="width=device-width">
   <title>Welcome</title>
 </head>
-  
-<body>
-  
-  <section class="begin">
+
+<body class="box">
+ 
+  <section class="begin smallBox">
     <h1>Let's Party!</h1>
-    <img src="logo.jpg" class="center" alt="logo">
+    <img src=C:\Users\barse\Desktop\quizapp\logo.jpg class="center" alt="logo">
     <h2>Quiz</h2>
     <a href="#">Start</a>
   </section>
   
-  <main class="quiz">
-      <img src="https://raw.githubusercontent.com/bnsimond/quiz1/6dbe6975ef5c9131640ceba2558e7c999b13dd0d/balloons.png" alt="balloons" height="150" width="150">
+  <main class="quiz smallBox">
+      <img src="https://raw.githubusercontent.com/bnsimond/quiz1/6dbe6975ef5c9131640ceba2558e7c999b13dd0d/balloons.png" alt="balloons" height="150" width="150" class="balloons">
     <br>
-    <h3>Show question here</h3>
+    <h3 class="question">Show question here</h3>
     <br>
-    <form id="quizQuestions" action="#" class="radio">   
-      <div><input type="radio" id="a" name="Option" value="0"> <label> A </label></div> 
-      <div><input type="radio" id="b" name="Option" value="1"> <label> B </label></div> 
-      <div><input type="radio" id="c" name="Option" value="2"> <label> C </label></div> 
-      <div><input type="radio" id="d" name="Option" value="3"> <label> D </label></div> 
-      <div><input type="radio" id="e" name="Option" value="4"> <label> E </label></div> 
+    <form id="quizQuestions" action="#" class="radio">
+      <div><input type="radio" id="a" name="Option" value="0">                     <label for="a">A</label></div>
+      
+      <div><input type="radio" id="b" name="Option" value="1">                     <label for="b">B</label></div>
+      
+      <div><input type="radio" id="c" name="Option" value="2">
+      <label for="c">C</label></div>
+      
+      <div><input type="radio" id="d" name="Option" value="3">
+      <label for="d">D
+      </label></div>
+      
+      <div><input type="radio" id="e" name="Option" value="4">
+      <label for="e">E</label></div>
       <p>
       <input type="submit" id="submit" value="Submit" input="Good Luck!"></p>
     </form>
   
     <button class="nextQuestion">Next Question</button>
-  
-   </main>
 
-   <summary class="more"> Hooray! You are correct.</summary>
+    <summary class="more"> Hooray! You are correct.</summary>
 
     <summary class="specifics"> The correct answer is highlight.
     </summary>
-
+    
       <a href="#" class="again">Restart</a>
-      
+    </main>  
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script src="index.js"></script>
 </body>
+
 
 </html>
