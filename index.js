@@ -47,7 +47,7 @@ let questions = [
   
    {
     title: "I am going to a birthday party for my cousin, what should I buy her?",
-    answers: ["Nothing", "Depends on his/her interests", "Regift what they bought you for your birthday", "Nothing more than $1.00", "A dog."],
+    answers: ["Nothing", "Depends on her interests", "Regift what they bought you for your birthday", "Nothing more than $1.00", "A dog."],
     correct: 1
    },
   
